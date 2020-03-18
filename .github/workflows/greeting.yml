@@ -1,8 +1,8 @@
 # This is the name that will show up in Github UI for thie workflow
-name: Kerrin's greeting workflow 🔥
+name: Kerrin's greeting workflow
 
 # This is the user-initiated event that will trigger the workflow to run
-on: push
+on: [push]
 
 # Jobs is a map of named jobs that will run (in parallel by default) in this workflow
 jobs:
@@ -10,7 +10,7 @@ jobs:
   # in the map, then this is the name in the Github UI
   greet:
     # this is the name that will be shown in the Github UI
-    name: Greet me 👋
+    name: Greet me
     # Each job is run in an isolated VM. We specify the OS/setup we want to use.
     # TODO is it mandatory to specify this
     runs-on: ubuntu-latest
