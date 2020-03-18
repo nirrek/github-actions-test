@@ -9,8 +9,6 @@ jobs:
   # greet here will be the <job-id>. My guess is if you omit the name
   # in the map, then this is the name in the Github UI
   greet:
-    # this is the name that will be shown in the Github UI
-    name: Greet me
     # Each job is run in an isolated VM. We specify the OS/setup we want to use.
     # TODO is it mandatory to specify this
     runs-on: ubuntu-latest
@@ -25,8 +23,6 @@ jobs:
     # basic things like getting the input ars / setting the return values.
     steps:
       - 
-        # Optional name for better naming in github
-        name: Echo a greeting
         # run will simply execute the shell command (bash by default)
         run: echo Hello kerrin
 
