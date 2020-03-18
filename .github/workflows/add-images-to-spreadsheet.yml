@@ -1,0 +1,8 @@
+name: Add images to spreadsheet
+on: push
+
+jobs:
+  add-images-to-spreadsheet:
+    steps:
+      - name: Say hello
+        run: echo Hello there
