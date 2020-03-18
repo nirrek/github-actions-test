@@ -3,6 +3,7 @@ on: push
 
 jobs:
   add-images-to-spreadsheet:
+    runs-on: ubuntu-latest
     steps:
       - name: Say hello
         run: echo Hello there
