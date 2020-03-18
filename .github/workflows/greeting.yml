@@ -1,0 +1,32 @@
+# This is the name that will show up in Github UI for thie workflow
+name: Kerrin's greeting workflow 🔥
+
+# This is the user-initiated event that will trigger the workflow to run
+on: push
+
+# Jobs is a map of named jobs that will run (in parallel by default) in this workflow
+jobs:
+  # greet here will be the <job-id>. My guess is if you omit the name
+  # in the map, then this is the name in the Github UI
+  greet:
+    # this is the name that will be shown in the Github UI
+    name: Greet me 👋
+    # Each job is run in an isolated VM. We specify the OS/setup we want to use.
+    # TODO is it mandatory to specify this
+    runs-on: ubuntu-latest
+
+    # Each job is defined by a series of steps. These are all run as separate
+    # processes within the given VM. We typically do IPC via the filesystem.
+    # Steps are either an Action or an inline shell script. If it's an Action
+    # i think you can do IPC with the input/output definitions of the action.
+    # technically those same capabilities are probably accessible to you with
+    # the shell scripts but are probably cumbersome to use (ie. fs is easier)
+    # This is probably why they tell you to use those node libraries to do
+    # basic things like getting the input ars / setting the return values.
+    steps:
+      - 
+        # Optional name for better naming in github
+        name: Echo a greeting
+        # run will simply execute the shell command (bash by default)
+        run: echo Hello kerrin
+
