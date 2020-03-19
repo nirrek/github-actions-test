@@ -25,8 +25,8 @@ jobs:
       - name: Echo some env vars
         run: echo $HOME $GITHUB_WORKSPACE $GITHUB_EVENT_PATH
 
-      - name: List the contents
-        run: ls -la
+      - name: Show what in that even json blob
+        run: cat $GITHUB_EVENT_PATH
 
       # - name: Pass variable via env
       #   env:
