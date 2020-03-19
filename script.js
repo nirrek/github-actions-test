@@ -1,10 +1,24 @@
-const { x, y } = process.env;
+const { execSync } = require('child_process');
 
-// Do these types of logs in my script show up
-// by default in Github UI or will I also have to
-// do the weird secret setting shit to get it working
-console.log(JSON.stringify(process.env, null, 2));
-console.log('env variables', x, y);
+const currentSha = process.env.current_sha;
+const beforeSha = process.env.before_sha;
 
-// comment
-// another
+const changedFilePaths = execSync(
+  `git diff ${beforeSha} ${currentSha} --name-only`,
+  {
+    encoding: 'utf8',
+  },
+)
+  .split('\n')
+  .filter(Boolean);
+
+const jsxFilePaths = changedFilePaths
+  .filter(filePath => filePath.endsWith('.jsx'));
+
+console.log('jsxFilePaths', jsxFilePaths);
+
+// for (const filePath of jsxFilePaths) {
+//   const jsx = fs.readFileSync(file, 'utf8');
+
+//   // etc.
+// }
