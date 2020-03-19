@@ -5,5 +5,36 @@ jobs:
   add-images-to-spreadsheet:
     runs-on: ubuntu-latest
     steps:
-      - name: Say hello
-        run: echo Hello there
+
+      - name: Checkout our repository
+        uses: actions/checkout@v2
+      # I think technically we could omit this step
+      # if we want to use the system-installed node.
+      # Obviously that means less-reproduceable runs though
+      - name: Setup Node.js for use with actions
+        uses: actions/setup-node@v1.1.0
+        with:
+          # Use the node version that is already on ubuntu-latest
+          # so we don't have to download and install it.
+          # See https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md
+          node-version: v12.16.1
+
+      - name: Pass variable via env
+        env:
+          x: 3
+          y: 7
+          X: 2
+          Y: 5
+          token: ${{ github.token }}
+        run: node ../script.js
+        # Can I use a with block here too?
+        # Is a with block just a shorthand with lame convetions
+        # for setting an env block?
+
+
+
+# First quesiton is: how do we pass data into our
+# node process. Just exec on the CLI with run and
+# interpolate. Do they allow interpolation, maybe its banned??
+
+# Maybe I have to use environment variable to do it...
