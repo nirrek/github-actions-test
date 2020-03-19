@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      # - name: Checkout our repository
-      #   uses: actions/checkout@v2
+      - name: Checkout our repository
+        uses: actions/checkout@v2
       # I think technically we could omit this step
       # if we want to use the system-installed node.
       # Obviously that means less-reproduceable runs though
