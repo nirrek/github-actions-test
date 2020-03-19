@@ -30,8 +30,8 @@ jobs:
       
       - name: Use the github context instead
         env:
-          before_sha: github.event.before
-          sha: github.sha
+          before_sha: ${{ github.event.before }}
+          sha: ${{ github.sha }}
         run: echo $before_sha $sha
 
       # - name: Pass variable via env
