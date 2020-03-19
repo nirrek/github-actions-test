@@ -19,12 +19,19 @@ jobs:
           # See https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md
           node-version: v12.16.1
 
+      - name: Print working directory
+        run: pwd
+
+      - name: Echo some env vars
+        run: echo $HOME $GITHUB_WORKSPACE $GITHUB_EVENT_PATH
+
       - name: Pass variable via env
         env:
           x: 3
           y: 7
           token: ${{ github.token }}
-        run: node ../script.js
+        # I think our repo gets checked out into our workspace?
+        run: node ./script.js
         # Can I use a with block here too?
         # Is a with block just a shorthand with lame convetions
         # for setting an env block?
