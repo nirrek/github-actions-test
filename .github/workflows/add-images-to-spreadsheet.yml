@@ -6,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Checkout our repository
-        uses: actions/checkout@v2
+      # - name: Checkout our repository
+      #   uses: actions/checkout@v2
       # I think technically we could omit this step
       # if we want to use the system-installed node.
       # Obviously that means less-reproduceable runs though
@@ -25,16 +25,16 @@ jobs:
       - name: Echo some env vars
         run: echo $HOME $GITHUB_WORKSPACE $GITHUB_EVENT_PATH
 
-      - name: Pass variable via env
-        env:
-          x: 3
-          y: 7
-          token: ${{ github.token }}
-        # I think our repo gets checked out into our workspace?
-        run: node ./script.js
-        # Can I use a with block here too?
-        # Is a with block just a shorthand with lame convetions
-        # for setting an env block?
+      # - name: Pass variable via env
+      #   env:
+      #     x: 3
+      #     y: 7
+      #     token: ${{ github.token }}
+      #   # I think our repo gets checked out into our workspace?
+      #   run: node ./script.js
+      #   # Can I use a with block here too?
+      #   # Is a with block just a shorthand with lame convetions
+      #   # for setting an env block?
 
 
 
