@@ -23,8 +23,6 @@ jobs:
         env:
           x: 3
           y: 7
-          X: 2
-          Y: 5
           token: ${{ github.token }}
         run: node ../script.js
         # Can I use a with block here too?
