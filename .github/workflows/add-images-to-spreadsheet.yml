@@ -11,6 +11,10 @@ jobs:
       # I think technically we could omit this step
       # if we want to use the system-installed node.
       # Obviously that means less-reproduceable runs though
+
+      - name: Log commits
+        run: git log --oneline
+
       - name: Setup Node.js for use with actions
         uses: actions/setup-node@v1.1.0
         with:
