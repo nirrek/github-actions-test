@@ -8,6 +8,13 @@ jobs:
 
       - name: Checkout our repository
         uses: actions/checkout@v2
+        with:
+          # The default implementation only fetches the latest commit
+          # Using 0 means to fetch the entire history.
+          # Without this the git diff command will fail since the older
+          # commit we want to compare against won't exist.
+          fetch-depth: 0
+
       # I think technically we could omit this step
       # if we want to use the system-installed node.
       # Obviously that means less-reproduceable runs though
