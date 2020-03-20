@@ -19,36 +19,13 @@ jobs:
           # See https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md
           node-version: v12.16.1
 
-      - name: Print working directory
-        run: pwd
+      - name: Install dependencies
+        run: yarn
 
-      - name: Echo some env vars
-        run: echo $HOME $GITHUB_WORKSPACE $GITHUB_EVENT_PATH
-
-      - name: Show what in that even json blob
-        run: cat $GITHUB_EVENT_PATH
-      
-      - name: Use the github context instead
+      - name: Add new DraftImages to spreadsheet
         env:
-          before_sha: ${{ github.event.before }}
-          sha: ${{ github.sha }}
-        run: echo $before_sha $sha
-
-      # - name: Pass variable via env
-      #   env:
-      #     x: 3
-      #     y: 7
-      #     token: ${{ github.token }}
-      #   # I think our repo gets checked out into our workspace?
-      #   run: node ./script.js
-      #   # Can I use a with block here too?
-      #   # Is a with block just a shorthand with lame convetions
-      #   # for setting an env block?
-
-
-
-# First quesiton is: how do we pass data into our
-# node process. Just exec on the CLI with run and
-# interpolate. Do they allow interpolation, maybe its banned??
-
-# Maybe I have to use environment variable to do it...
+          CURRENT_SHA: ${{ github.sha }}
+          BEFORE_SHA: ${{ github.event.before }}
+          SHEETS_SERVICE_ACCOUNT_EMAIL: ${{ secrets.SHEETS_SERVICE_ACCOUNT_EMAIL }}
+          SHEETS_SERVICE_ACCOUNT_KEY: ${{ secrets.SHEETS_SERVICE_ACCOUNT_KEY }}
+        run: node ./script.js

@@ -1,0 +1,17 @@
+{
+  "name": "github-actions-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:nirrek/github-actions-test.git",
+  "author": "nirrek <kerrinenglish@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/parser": "^7.8.8",
+    "@babel/traverse": "^7.8.6",
+    "@babel/types": "^7.8.7",
+    "dotenv": "^8.2.0",
+    "googleapis": "^48.0.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {}
+}
