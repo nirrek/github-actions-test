@@ -99,8 +99,10 @@ async function main() {
     filePath.endsWith('.jsx'),
   );
 
-  // If we haven't changed and .jsx files, no work to do. Exit early.
-  if (jsxFilePaths.length === 0) return;
+  if (jsxFilePaths.length === 0) {
+    console.log('No .jsx files were found in the diff. Thus, no DraftImages to add');
+    return;
+  }
 
   const sheets = google.sheets({
     version: 'v4',
@@ -111,11 +113,10 @@ async function main() {
     }),
   });
 
-  // Before we begin, validate that the structure of the sheet it what we expect.
-  // This is only a very weak form of validation, but gives us some protection.
+  // Before we begin, validate that the structure of the sheet is what we expect.
   await validateSheetStructure(sheets);
 
-  // A list of rows we may want to append (depends on what's already in the sheet)
+  // A list of rows we may want to append (depends if they are already in the sheet or not)
   const maybeRowsToAppend = [];
   for (const filePath of jsxFilePaths) {
     const code = fs.readFileSync(filePath, 'utf8');
