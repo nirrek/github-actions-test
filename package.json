@@ -11,7 +11,7 @@
     "@babel/types": "^7.8.7",
     "dotenv": "^8.2.0",
     "googleapis": "^48.0.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {}
 }
